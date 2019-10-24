@@ -3,7 +3,7 @@
 __Model:__ Huawei E5170 (compatible with most Huawei E* routers)\
 __Firmware version:__ 21.236.17.51.54\
 __Webpanel version:__ 14.100.01.11.54
-\
+
 # Usage
 \
 Connect to router and authenticate
