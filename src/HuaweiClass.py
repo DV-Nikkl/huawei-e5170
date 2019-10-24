@@ -1,4 +1,4 @@
-import requests, hashlib, base64
+import requests, hashlib, base64, sys
 from bs4 import BeautifulSoup
 
 class Huawei:
@@ -6,6 +6,7 @@ class Huawei:
     ses_info_url = '/api/webserver/SesTokInfo'
     login_url = '/api/user/login'
     host_list_url = '/api/wlan/host-list'
+    info_url = '/api/device/information'
 
     def __init__(self, ip):
         self.ip = ip
@@ -23,6 +24,24 @@ class Huawei:
             hosts[i] = hosts[i].split('[INFO]')
 
         return hosts
+
+    # return device information
+    def deviceInfo(self):
+        r = self.get(self.info_url)
+        xml = BeautifulSoup(r.text, features="html.parser")
+        xml = xml.response
+        print('Device Name    : '+xml.devicename.text)
+        print('Serial Number  : '+xml.serialnumber.text)
+        print('IMEI           : '+xml.imei.text)
+        print('IMSI           : '+xml.imsi.text)
+        print('Iccid          : '+xml.iccid.text)
+        print('Telephone      : '+xml.msisdn.text)
+        print('Hardware       : '+xml.hardwareversion.text)
+        print('Software       : '+xml.softwareversion.text)
+        print('WebUI          : '+xml.webuiversion.text)
+        print('MAC1           : '+xml.macaddress1.text)
+        print('MAC2           : '+xml.macaddress2.text)
+        print('Product family : '+xml.productfamily.text)
 
     # custom get/post requests
     def get(self, url, data=''):
@@ -79,3 +98,4 @@ class Huawei:
 
     def base64enc(self, s):
         return base64.b64encode(s.encode()).decode()
+
