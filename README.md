@@ -6,29 +6,30 @@ __WebUI version:__ 14.100.01.11.54
 
 # Usage
 \
-Connect to router and authenticate
+__Connect to router and authenticate__
 ```python
 api = Huawei('192.168.0.1')
 api.login('username', 'password')
 ```
 \
-Print device information
+__Print device information__
 ```python
 api.deviceInfo()
 ```
 \
-Return list of connected hosts
+__Return list of connected hosts__
 ```python
 hosts = api.listHosts()
 ```
 \
-Send custom api requests
+__Send custom api requests (XML response)__
+Send custom request to router api. Returns XML data
 ```python
-api.updateHeaders() # IMPORTANT: Request new token
+# IMPORTANT: Request new token
+api.updateHeaders()
 
 # GET
 response = api.get('/url/to/api', 'optional data')
 # POST
 response = api.post('/url/to/api', 'optional data')
 ```
-\
