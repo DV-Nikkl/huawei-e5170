@@ -23,7 +23,6 @@ hosts = api.listHosts()
 ```
 \
 __Send custom api requests (XML response)__
-Send custom request to router api. Returns XML data
 ```python
 # IMPORTANT: Request new token
 api.updateHeaders()
