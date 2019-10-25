@@ -24,9 +24,11 @@ hosts = api.listHosts()
 \
 Send custom api requests
 ```python
+api.updateHeaders() # IMPORTANT: Request new token
+
 # GET
 response = api.get('/url/to/api', 'optional data')
 # POST
 response = api.post('/url/to/api', 'optional data')
 ```
-
+\
