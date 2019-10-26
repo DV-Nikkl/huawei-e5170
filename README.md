@@ -12,23 +12,13 @@ api = Huawei('192.168.0.1')
 api.login('username', 'password')
 ```
 \
-__Print device information__
+__Send custom POST requests__
 ```python
-api.deviceInfo()
+api.post('/api/led/circle-switch', '<?xml version: "1.0" encoding="UTF-8"?><request><ledSwitch>1</ledSwitch></request>')
 ```
 \
-__Return list of connected hosts__
+__Send custom GET request__
 ```python
-hosts = api.listHosts()
-```
-\
-__Send custom api requests (XML response)__
-```python
-# IMPORTANT: Request new token
-api.updateHeaders()
-
-# GET
-response = api.get('/url/to/api', 'optional data')
-# POST
-response = api.post('/url/to/api', 'optional data')
+response = api.get('/api/led/circle-switch')
+print(response.text)
 ```
