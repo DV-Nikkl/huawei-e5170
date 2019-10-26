@@ -14,11 +14,13 @@ api.login('username', 'password')
 \
 __Send custom POST requests__
 ```python
+# Turn led on
 api.post('/api/led/circle-switch', '<?xml version: "1.0" encoding="UTF-8"?><request><ledSwitch>1</ledSwitch></request>')
 ```
 \
 __Send custom GET request__
 ```python
+# Get LED status
 response = api.get('/api/led/circle-switch')
 print(response.text)
 ```
