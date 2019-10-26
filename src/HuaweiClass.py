@@ -51,12 +51,9 @@ class Huawei:
         }
 
     # custom get/post requests
-    def get(self, url, data=''):
+    def get(self, url):
         self.updateHeaders()
-        if data != '':
-            r = self.session.get('http://'+self.router['ip']+url, headers=self.headers, data=data)
-        else:
-            r = self.session.get('http://'+self.router['ip']+url, headers=self.headers)
+        r = self.session.get('http://'+self.router['ip']+url, headers=self.headers)
         return r
 
     def post(self, url, data=''):
