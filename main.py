@@ -1,12 +1,12 @@
 from src.HuaweiClass import Huawei
 
 # Authenticate
-huawei = Huawei('192.168.0.1')
-huawei.login('username', 'password')
+api = Huawei('192.168.0.1')
+api.login('username', 'password')
 
-# Api requests
-hosts = huawei.listHosts()
-print('Clients: '+str(len(hosts)))
+# Custom POST request to turn led on
+api.post('/api/led/circle-switch', '<?xml version: "1.0" encoding="UTF-8"?><request><ledSwitch>1</ledSwitch></request>')
 
-# Print device information
-huawei.deviceInfo()
+# Custom GET request to led status
+response = api.get('/api/led/circle-switch')
+print(response)
